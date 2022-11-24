@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1047316351044",
+    "project_id": "conzon-9328c",
+    "storage_bucket": "conzon-9328c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047316351044:android:291ab3eb042b8bdd885411",
+        "android_client_info": {
+          "package_name": "com.example.conzon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047316351044-1djucu7777vh8061s4tr9353pae0kqdh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC49LwcRjXMLjZeCe2yUPam0tXAk0U9Xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047316351044-1djucu7777vh8061s4tr9353pae0kqdh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
