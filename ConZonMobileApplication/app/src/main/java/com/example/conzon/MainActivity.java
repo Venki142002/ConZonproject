@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonWorkManager(View view) {
+        Toast.makeText(MainActivity.this, "Processing Please wait", Toast.LENGTH_LONG).show();
         textView = findViewById(R.id.loginbtn);
         TextView username = findViewById(R.id.username);
         TextView password = findViewById(R.id.password);

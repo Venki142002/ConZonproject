@@ -2,6 +2,7 @@ package com.example.conzon;
 
 import android.app.NotificationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class Registration extends AppCompatActivity {
     }
 
     public void Register(View view) {
+        Toast.makeText(Registration.this, "Processing Please wait", Toast.LENGTH_LONG).show();
         textView = findViewById(R.id.signupbtn);
         EditText username = findViewById(R.id.Regusername);
         EditText email = findViewById(R.id.email);
@@ -52,10 +54,11 @@ public class Registration extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             assert response.body() != null;
                             String result = response.body().getResult();
-                            if (result.equals("Created  Successfully \uD83D\uDE0D")) {
-                                Toast.makeText(Registration.this, result, Toast.LENGTH_LONG).show();
-                            } else
-                                Toast.makeText(Registration.this, result, Toast.LENGTH_LONG).show();
+                            Toast.makeText(Registration.this, result, Toast.LENGTH_LONG).show();
+                            if (result.equals("Created successfully \uD83D\uDE0D")) {
+                                Log.i("ngcccccv","ok");
+                                onBackPressed();
+                            }
                         } else {
                             String messages = "Please Try again Later....";
                             Toast.makeText(Registration.this, messages, Toast.LENGTH_LONG).show();

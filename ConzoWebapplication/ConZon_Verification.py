@@ -36,7 +36,7 @@ def admin_register(name, passwords, req_id):
             ibm_db.bind_param(prep_stmt, 2, passwords)
             ibm_db.bind_param(prep_stmt, 3, req_id)
             execution(prep_stmt)
-            ConZon_Mail_config.assing_mail('ConZo Account Creation', 'Account was successfully Created', name)
+            ConZon_Mail_config.assing_mail('ConZo Account Creation', 'Admin Account was successfully Created 😊', name)
             return True
 
     else:
@@ -44,7 +44,7 @@ def admin_register(name, passwords, req_id):
 
 
 def dashboard_data():
-    query = 'Select * from containment_details LIMIT 5'
+    query = 'Select * from containment_details ORDER BY ID DESC LIMIT 5'
     stmt = execution_immediate(query)
     dictionary = ibm_db.fetch_both(stmt)
     employee = []
@@ -137,7 +137,7 @@ def user_register(username, name, passwords):
         ibm_db.bind_param(prep_stmt, 2, name)
         ibm_db.bind_param(prep_stmt, 3, passwords)
         execution(prep_stmt)
-        ConZon_Mail_config.assing_mail('ConZo Account Creation', 'Account was successfully Created', name)
+        ConZon_Mail_config.assing_mail('ConZo Account Creation', 'User Account was successfully Created 😊', name)
         return "Created successfully 😍"
 
 
@@ -204,4 +204,3 @@ def locationprocess(res):
     return "YOU ARE NOT IN CONTAINMENT ZONE ✌️"
 
 
-locationprocess('{"Latitude":"11.022742869111418","Longitude":"76.9071527570486"}')

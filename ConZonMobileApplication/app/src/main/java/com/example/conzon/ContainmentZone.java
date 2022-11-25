@@ -4,6 +4,7 @@ package com.example.conzon;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
+import com.example.conzon.backgroud.Feching_condetails;
 import com.example.conzon.backgroud.alerting;
 import com.example.conzon.backgroud.current_location;
 import com.example.conzon.models.containment_API_request;
@@ -53,7 +55,7 @@ public class ContainmentZone extends AppCompatActivity implements OnMapReadyCall
         builder = new NotificationCompat.Builder(ContainmentZone.this, CHANNEL_ID);
         notificationManagerCompat = NotificationManagerCompat.from(this);
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        WorkManager.getInstance(this).enqueue(uploadWorkRequest);
+
     }
 
     @Override
@@ -63,6 +65,7 @@ public class ContainmentZone extends AppCompatActivity implements OnMapReadyCall
     }
 
     public void process() {
+        WorkManager.getInstance(this).enqueue(uploadWorkRequest);
         // creating array list for adding all our locations.
         ArrayList<LatLng> locationArrayList = containment_API_request.getLocationArrayList();
         LatLng current = new LatLng(current_location.getLati(), current_location.getLongi());
@@ -75,11 +78,11 @@ public class ContainmentZone extends AppCompatActivity implements OnMapReadyCall
                     .strokeColor(Color.RED)
                     .fillColor(Color.YELLOW));
             // below lin is use to zoom our camera on map.
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(18.8f));
-            mMap.setMinZoomPreference(16);
 
             // below line is use to move our camera to the specific location.
         }
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(18.8f));
+        mMap.setMinZoomPreference(16);
         mMap.addMarker(new MarkerOptions().position(current));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
     }
@@ -115,8 +118,8 @@ public class ContainmentZone extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public void onBackPressed() {
+        startActivity(new Intent(ContainmentZone.this, MainActivity.class));
 
-        android.os.Process.killProcess(android.os.Process.myPid());
         // This above line close correctly
     }
 }
